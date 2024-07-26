@@ -43,11 +43,9 @@ const Register = () => {
     };
 
     try {
-      // Make POST request to json-server
       const response = await axios.post('http://localhost:3001/users', userData);
 
-      // Assuming successful response, navigate to home page or handle success state
-      navigate('/');
+      navigate('/login');
 
     } catch (error) {
       console.error('Error registering user:', error);
@@ -76,14 +74,13 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className='error-message'>{passwordError}</div>
+            <div className='error-message'>{confirmPasswordError}</div>
             <input
               type='password'
               placeholder='Confirm Password'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <div className='error-message'>{confirmPasswordError}</div>
             <button type='submit'>Register</button>
           </form>
 

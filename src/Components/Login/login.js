@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { validateEmail, validatePassword } from './validation';
+import { loginUser } from './auth';
 import './login.css';
 
 const Login = () => {
@@ -11,39 +12,30 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-
     e.preventDefault();
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!emailRegex.test(email)) {
+    if (!validateEmail(email)) {
       setEmailError('Please enter a valid email address');
       return;
     } else {
       setEmailError('');
     }
 
-    if(password.length < 6) {
+    if (!validatePassword(password)) {
       alert('Password must be at least 6 characters long');
       return;
     }
 
-    try{
-      const response = await axios.get(`http://localhost:3001/users?email=${email}&password=${password}`);
-
-      console.log(response.data)
-
-      if(response.data.length > 0) {
+    try {
+      const user = await loginUser(email, password);
+      if (user.length > 0) {
         setShowSuccessMessage(true);
         setTimeout(() => { setShowSuccessMessage(false); }, 3000);
         navigate('/');
-      } 
-      
-      else{
+      } else {
         alert('Invalid email or password');
       }
-    } 
-    
-    catch (error){
+    } catch (error) {
       console.error('Error fetching user details:', error);
       alert('An error occurred while fetching user details');
     }

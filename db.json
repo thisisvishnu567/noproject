@@ -1,7 +1,9 @@
 {
-    "users" : [
-        { "id": "01" ,"email" : "sample1@gmail.com", "password" : "1234567890" },
-        { "id": "02" ,"email" : "sample2@gmail.com", "password" : "1234567890" },
-        { "id": "03" ,"email" : "vishnuram123@gmail.com", "password" : "Vishnu2004.0" }
-    ]
+  "users": [
+    {
+      "id": "61bb",
+      "email": "vishalgv@gmail.com",
+      "password": "vishal123"
+    }
+  ]
 }

@@ -13,6 +13,8 @@ const Home = () => {
               <li><a class="dropdown-item" href="#">Recharge</a></li>
               <li><a class="dropdown-item" href="#">New Prepaid Sim</a></li>
               <li><a class="dropdown-item" href="#">View Plans</a></li>
+              <li><a class="dropdown-item" href="#">International Roaming</a></li>
+              <li><a class="dropdown-item" href="#">Switch Prepaid to Postpaid</a></li>
             </ul>
           </div> 
         </nav>
