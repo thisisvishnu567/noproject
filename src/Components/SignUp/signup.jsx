@@ -4,8 +4,11 @@ import axios from 'axios';
 import './signUp.css';
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');//Name
+  const [email, setEmail] = useState('');//email
+  const [password, setPassword] = useState('');//password
+  const [Ph, setPh] = useState('');//PhoneNumber
+  const [OP, setOperator] = useState('');//PhoneNumber
   const [confirmPassword, setConfirmPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -38,8 +41,12 @@ const Register = () => {
     }
 
     const userData = {
+      
+      name,
+      Ph,
+      OP,
       email,
-      password,
+      password
     };
 
     try {
@@ -59,6 +66,38 @@ const Register = () => {
           <h1>Register</h1>
 
           <form onSubmit={handleRegister}>
+
+            <input
+              type='text'
+              placeholder='Name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+            <input
+              type='tel'
+              placeholder='Phone Number'
+              value={Ph}
+              onChange={(e) => setPh(e.target.value.replace(/\D/g, '').slice(0, 10))}
+              maxLength={10}
+              pattern='\d{10}'
+            />
+
+            <select 
+              className='dropdownOP'
+              type='text'
+              placeholder='Operator'
+              value={OP}
+              onChange={(e) => setOperator(e.target.value)}
+            >
+              <option>Aircel</option>
+              <option>Airtel</option>
+              <option>BSNL</option>
+              <option>Jio</option>
+              <option>Tata DOCOMO</option>
+              <option>Vodafone</option>
+            </select>
+            
             <div className='error-message'>{emailError}</div>
             <input
               type='text'
@@ -66,7 +105,7 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            
+
             <div className='error-message'>{passwordError}</div>
             <input
               type='password'
