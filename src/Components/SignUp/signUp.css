@@ -1,16 +1,15 @@
-/* Register.css */
 .register-page {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0; /* Lighter background color */
+    background-color: #f0f0f0;
   }
   
   .register-container {
-    background-color: #ffffff; /* Lighter background color */
+    background-color: #f0f0f0;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     overflow: hidden;
     width: 400px;
   }
@@ -41,6 +40,7 @@
     font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f8f8f8;
     color: #333;
   }
@@ -80,7 +80,7 @@
   }
   
   .login-link p {
-    color: #555; /* Slightly darker text color for better contrast */
+    color: #555;
   }
   
   .login-link a {

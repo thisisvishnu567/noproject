@@ -63,7 +63,7 @@ const Register = () => {
     <div className='register-page'>
       <div className='register-container'>
         <div className='register-form'>
-          <h1>Register</h1>
+          {/* <h1>Register</h1> */}
 
           <form onSubmit={handleRegister}>
 
