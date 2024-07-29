@@ -19,7 +19,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   position: relative;
-  max-height: 90vh; /* Adjust height as needed */
+  max-height: 90vh;
   overflow-y: auto;
 }
 
@@ -27,7 +27,7 @@ body {
   text-align: center;
   margin-bottom: 30px;
   font-size: 2.5em;
-  color: #007BFF; /* Adjust color as needed */
+  color: #007BFF;
 }
 
 button {
@@ -46,30 +46,30 @@ button:hover {
 }
 
 button.add {
-  background-color: #28a745; /* Green color for add button */
+  background-color: #28a745;
   color: #fff;
 }
 
 button.add:hover {
-  background-color: #218838; /* Darker green for hover effect */
+  background-color: #218838;
 }
 
 button.edit {
-  background-color: #007BFF; /* Blue color for edit button */
+  background-color: #007BFF;
   color: #fff;
 }
 
 button.edit:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
+  background-color: #0056b3;
 }
 
 button.delete {
-  background-color: #dc3545; /* Red color for delete button */
+  background-color: #dc3545;
   color: #fff;
 }
 
 button.delete:hover {
-  background-color: #c82333; /* Darker red for hover effect */
+  background-color: #c82333;
 }
 
 .tables {
@@ -79,15 +79,15 @@ button.delete:hover {
 .admintable {
   margin-bottom: 20px;
   border-collapse: collapse;
-  max-height: 500px; /* Increased height for the table container */
-  overflow-y: auto; /* Scroll if content overflows */
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 .admintable h2 {
   text-align: center;
   margin-bottom: 15px;
   font-size: 1.8em;
-  color: #007BFF; /* Adjust color as needed */
+  color: #007BFF;
 }
 
 table {
@@ -136,7 +136,7 @@ form {
 
 form input[type="submit"] {
   width: 100%;
-  background-color: #28a745; /* Green color for submit button */
+  background-color: #28a745;
   color: #fff;
   border: none;
   padding: 15px;
@@ -146,7 +146,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-  background-color: #218838; /* Darker green for hover effect */
+  background-color: #218838;
 }
 
 /* Modal overlay styles */
@@ -177,21 +177,21 @@ form input[type="submit"]:hover {
 }
 
 .modal button.cancel {
-  background-color: #dc3545; /* Red color for cancel button */
+  background-color: #dc3545;
   color: #fff;
 }
 
 .modal button.cancel:hover {
-  background-color: #c82333; /* Darker red for hover effect */
+  background-color: #c82333;
 }
 
 
 button.return-home {
-  background-color: #17a2b8; /* Teal color for the return button */
+  background-color: #17a2b8;
   color: #fff;
   font-size: 1em;
 }
 
 button.return-home:hover {
-  background-color: #138496; /* Darker teal for hover effect */
+  background-color: #138496;
 }
