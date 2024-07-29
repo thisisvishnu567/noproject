@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { validateEmail, validatePassword } from './validation';
+import { validateMobileNumber, validatePassword } from './validation';
 import { loginUser } from './auth';
 import './login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [PhoneNumber, SetPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [emailError, setEmailError] = useState('');
+  const [PhoneError, SetPhoneError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!validateEmail(email)) {
-      setEmailError('Please enter a valid email address');
+    if (!validateMobileNumber(PhoneNumber)) {
+      SetPhoneError('Please enter a valid Phone Number');
       return;
     } else {
-      setEmailError('');
+      SetPhoneError('');
     }
 
     if (!validatePassword(password)) {
@@ -27,13 +27,13 @@ const Login = () => {
     }
 
     try {
-      const user = await loginUser(email, password);
+      const user = await loginUser(PhoneNumber, password);
       if (user.length > 0) {
         setShowSuccessMessage(true);
         setTimeout(() => { setShowSuccessMessage(false); }, 3000);
         navigate('/');
       } else {
-        alert('Invalid email or password');
+        alert('Invalid PhoneNumber or password');
       }
     } catch (error) {
       console.error('Error fetching user details:', error);
@@ -50,11 +50,13 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <input
               type='text'
-              placeholder='Email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder='Phone Number'
+              value={PhoneNumber}
+              onChange={(e) => SetPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+              maxLength={10}
+              pattern='\d{10}'
             />
-            <div className='error-message'>{emailError}</div>
+            <div className='error-message'>{PhoneError}</div>
             <input
               type='password'
               placeholder='Password'
