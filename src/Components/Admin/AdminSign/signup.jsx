@@ -4,11 +4,9 @@ import axios from 'axios';
 import './signUp.css';
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
-  const [operator, setOperator] = useState('');
+  const [admin_name, setName] = useState('');
+  const [admin_email, setEmail] = useState('');
+  const [admin_password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -19,21 +17,21 @@ const Register = () => {
     e.preventDefault();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(admin_email)) {
       setEmailError('Please enter a valid email address');
       return;
     } else {
       setEmailError('');
     }
 
-    if (password.length < 8) {
+    if (admin_password.length < 8) {
       setPasswordError('Password must be at least 8 characters long');
       return;
     } else {
       setPasswordError('');
     }
 
-    if (password !== confirmPassword) {
+    if (admin_password !== confirmPassword) {
       setConfirmPasswordError('Passwords do not match');
       return;
     } else {
@@ -41,18 +39,16 @@ const Register = () => {
     }
 
     const userData = {
-      name,
-      phone,
-      operator,
-      email,
-      password
+      admin_name,
+      admin_email,
+      admin_password
     };
 
     try {
-      await axios.post('http://localhost:3001/users', userData);
-      navigate('/login');
+      await axios.post('http://localhost:3001/admins', userData);
+      navigate('/admin-login');
     } catch (error) {
-      console.error('Error registering user:', error);
+      console.error('Error registering Admin:', error);
     }
   };
 
@@ -61,40 +57,20 @@ const Register = () => {
       <div className='register-container'>
         <div className='register-form'>
           <form onSubmit={handleRegister}>
+
+            
             <input
               type='text'
               placeholder='Name'
-              value={name}
+              value={admin_name}
               onChange={(e) => setName(e.target.value)}
             />
-
-            <input
-              type='tel'
-              placeholder='Phone Number'
-              value={phone}
-              onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
-              maxLength={10}
-            />
-
-            <select 
-              className='dropdownOP'
-              value={operator}
-              onChange={(e) => setOperator(e.target.value)}
-            >
-              <option value=''>Select Operator</option>
-              <option value='Aircel'>Aircel</option>
-              <option value='Airtel'>Airtel</option>
-              <option value='BSNL'>BSNL</option>
-              <option value='JIO'>JIO</option>
-              <option value='Tata DOCOMO'>Tata DOCOMO</option>
-              <option value='Vodafone'>Vodafone</option>
-            </select>
             
             <div className='error-message'>{emailError}</div>
             <input
               type='text'
               placeholder='Email'
-              value={email}
+              value={admin_email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
@@ -102,7 +78,7 @@ const Register = () => {
             <input
               type='password'
               placeholder='Password'
-              value={password}
+              value={admin_password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className='error-message'>{confirmPasswordError}</div>
@@ -117,7 +93,7 @@ const Register = () => {
 
           <div className='login-link'>
             <p>
-              Already have an account? <Link to='/login'>Login here</Link>
+              Already An Admin? <Link to='/admin-login'>Login here</Link>
             </p>
           </div>
         </div>

@@ -1,22 +1,56 @@
 {
   "users": [
     {
+      "id": "8459",
+      "name": "Atimanyu",
+      "phone": "9842237317",
+      "operator": "Aircel",
+      "email": "atimanyuks@gmail.com",
+      "password": "skcet123"
+    },
+    {
+      "id": "1722273528495",
+      "name": "Karthikeyan",
+      "phone": "9483183131",
+      "operator": "JIO",
+      "email": "karthi123@gmail.com",
+      "password": "karthi123"
+    },
+    {
+      "id": "1722275388154",
+      "name": "Saran",
+      "phone": "9791473136",
+      "operator": "Airtel",
+      "email": "saran567@gmail.com",
+      "password": "saran123"
+    },
+    {
+      "id": "1722277543784",
+      "name": "Harivatsan",
+      "phone": "9842693070",
+      "operator": "Vodafone",
+      "email": "hari567@gmail.com",
+      "password": "vishnu123"
+    }
+  ],
+  "admins": [
+    {
       "id": "61bb",
-      "email": "vishalgv@gmail.com",
-      "password": "vishal123",
-      "phonenumber" : "9842237317"
+      "admin_name": "Vishal",
+      "admin_email": "vishalgv@gmail.com",
+      "admin_password": "vishal123"
     },
     {
-      "id": "1427",
-      "email": "saranv123@gmail.com",
-      "password": "1234567890",
-      "phonenumber" : "8825833079"
+      "id": "1722275407319",
+      "admin_name": "Vishnuram",
+      "admin_email": "ramvishnu360@gmail.com",
+      "admin_password": "vishnu123"
     },
     {
-      "id": "aaee",
-      "email": "ramvishnu360@gmail.com",
-      "password": "vishnu123",
-      "phonenumber" : "9791473136"
+      "id": "142f",
+      "admin_name": "Dhanush",
+      "admin_email": "dhanushdon@gmail.com",
+      "admin_password": "dhansuh123"
     }
   ]
 }

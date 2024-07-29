@@ -5,7 +5,7 @@ import { loginUser } from './auth';
 import './login.css';
 
 const Login = () => {
-  const [PhoneNumber, SetPhoneNumber] = useState('');
+  const [phone, SetPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [PhoneError, SetPhoneError] = useState('');
@@ -14,7 +14,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!validateMobileNumber(PhoneNumber)) {
+    if (!validateMobileNumber(phone)) {
       SetPhoneError('Please enter a valid Phone Number');
       return;
     } else {
@@ -27,7 +27,7 @@ const Login = () => {
     }
 
     try {
-      const user = await loginUser(PhoneNumber, password);
+      const user = await loginUser(phone, password);
       if (user.length > 0) {
         setShowSuccessMessage(true);
         setTimeout(() => { setShowSuccessMessage(false); }, 3000);
@@ -45,13 +45,13 @@ const Login = () => {
     <div className='login-page'>
       <div className='login-container'>
         <div className='login-form'>
-          <h1>Login</h1>
+          {/* <h1>Login</h1> */}
           {showSuccessMessage && ( <div className='success-message'>Successfully Logged in</div> )}
           <form onSubmit={handleLogin}>
             <input
               type='text'
               placeholder='Phone Number'
-              value={PhoneNumber}
+              value={phone}
               onChange={(e) => SetPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
               maxLength={10}
               pattern='\d{10}'

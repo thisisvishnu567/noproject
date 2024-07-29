@@ -1,0 +1,49 @@
+.footer {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .fLists {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .fList {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    width: 200px; /* Optional: Set a fixed width for consistent alignment */
+  }
+  
+  .fListTitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .fListItem {
+    margin: 5px 0;
+  }
+  
+  .fListItem a {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter;
+  }
+  
+  .fListItem a:hover {
+    text-decoration: none;
+    color: #0073e6;
+  }
+  
+  .fText {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+  }
+  
