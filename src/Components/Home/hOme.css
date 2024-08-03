@@ -1,25 +1,25 @@
-
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.homeTitle{
-    width: 1024px;
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+.homeTitle {
+  width: 100%;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
 .home-container {
-    display: flexbox;
-    flex-direction: column;
-    align-items: center;
-    justify-content: initial;
-    margin-top: -.512%;
-    margin-left: -.512%;
-    margin-right: -.512%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* margin: 0;
+  padding: 0; */
 }
 
-  .carousel-container {
-    width: 100%;
-    height: 50%;
-  }
-  
+.carousel-container {
+  margin-top: .01%;
+  width: 100%;
+  height: 50%;
+}

@@ -4,7 +4,7 @@ import { validateMobileNumber, validatePassword } from './validation';
 import { loginUser } from './auth';
 import './login.css';
 
-const Login = () => {
+const Login = ({ onLogin }) => { // Accept onLogin as a prop
   const [phone, SetPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -31,6 +31,7 @@ const Login = () => {
       if (user.length > 0) {
         setShowSuccessMessage(true);
         setTimeout(() => { setShowSuccessMessage(false); }, 3000);
+        onLogin(user); // Pass user data to onLogin
         navigate('/');
       } else {
         alert('Invalid PhoneNumber or password');
@@ -45,8 +46,7 @@ const Login = () => {
     <div className='login-page'>
       <div className='login-container'>
         <div className='login-form'>
-          {/* <h1>Login</h1> */}
-          {showSuccessMessage && ( <div className='success-message'>Successfully Logged in</div> )}
+          {showSuccessMessage && (<div className='success-message'>Successfully Logged in</div>)}
           <form onSubmit={handleLogin}>
             <input
               type='text'

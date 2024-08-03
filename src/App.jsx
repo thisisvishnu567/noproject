@@ -6,6 +6,8 @@ import Home from './Components/Home/home';
 import AdminPage from './Components/Admin/admin';
 import Loginadmin from './Components/Admin/AdminLogin/adminlogin';
 import Signadmin from './Components/Admin/AdminSign/signup';
+import Navbar from './Components/Assets/Nav/Navbar';
+import Test from './Components/Test/Test';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -16,13 +18,15 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Navbar/>
       <Routes>
-        <Route path="/login" element={<Login setIsAdmin={setIsAdmin} />} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/sign" element={<Sign />} />
         <Route path="/" element={<Home />} />
         <Route path='/admin-login' element={<Loginadmin onLoginSuccess={handleAdminLogin} />} />
         <Route path='/admin-sign' element={<Signadmin />} />
         <Route path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to="/admin-login" />} />
+        <Route path='/testing' element= {<Test/>}/>
       </Routes>
     </BrowserRouter>
   );

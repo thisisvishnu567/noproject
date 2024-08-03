@@ -31,15 +31,17 @@
       "operator": "Vodafone",
       "email": "hari567@gmail.com",
       "password": "vishnu123"
+    },
+    {
+      "id": "1722313092127",
+      "name": "Vishal",
+      "phone": "923472938472",
+      "operator": "Aircel",
+      "email": "ramvishnu390@gmail.com",
+      "password": "vishnu123"
     }
   ],
   "admins": [
-    {
-      "id": "61bb",
-      "admin_name": "Vishal",
-      "admin_email": "vishalgv@gmail.com",
-      "admin_password": "vishal123"
-    },
     {
       "id": "1722275407319",
       "admin_name": "Vishnuram",

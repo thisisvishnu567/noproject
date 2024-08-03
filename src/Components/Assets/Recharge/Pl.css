@@ -1,0 +1,41 @@
+/* ButtonsInput.css */
+
+.buttons-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease-out;
+  }
+  
+  .button:hover {
+    background-color: #2e2e2f;
+    outline: rgb(66, 63, 63);
+  }
+  
+  .input-field {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #abcbdb;
+    /* border-radius: 30px; */
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
+  }
+  
