@@ -1,0 +1,9 @@
+Not Started the project 
+
+django-admin startproject project_name
+
+cd project_name
+
+python manage.py runserver
+
+//copy and paste the link/url in the browser
