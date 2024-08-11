@@ -1,5 +1,5 @@
 from django.db import models
-
+ 
 class User(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=255)
@@ -19,3 +19,39 @@ class Admin(models.Model):
 
     def __str__(self):
         return self.admin_name
+
+class PrepaidPlan(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.CharField(max_length=50)
+    data = models.CharField(max_length=50)
+    validity = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class PostpaidPlan(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.CharField(max_length=50)
+    data = models.CharField(max_length=50)
+    validity = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class DTHPlan(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.CharField(max_length=50)
+    channels = models.CharField(max_length=50)
+    validity = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class FiberPlan(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.CharField(max_length=50)
+    speed = models.CharField(max_length=50)
+    validity = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
