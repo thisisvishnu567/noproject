@@ -9,78 +9,78 @@ const Navbar = () => {
           <li className='nav-item'>
             <button className='nav-button'>Airtel Black</button>
             <div className='dropdown-content'>
-              <a href="#">Pay Bill</a>
-              <a href="#">View Plan</a>
+              <a href="#/paybill">Pay Bill</a>
+              <a href="/plans">View Plan</a>
             </div>
           </li>
 
           <li className='nav-item'>
             <button className='nav-button'>Prepaid</button>
             <div className='dropdown-content'>
-              <a href="#">Recharge</a>
-              <a href="#">New Prepaid Sim</a>
-              <a href="#">View Plan</a>
-              <a href="#">International Roaming</a>
-              <a href="#">Switch Prepaid to Postpaid</a>
+              <a href="/recharge">Recharge</a>
+              <a href="/newprepaid">New Prepaid Sim</a>
+              <a href="/plans">View Plan</a>
+              <a href="/introam">International Roaming</a>
+              <a href="/switchvice">Switch Prepaid to Postpaid</a>
             </div>
           </li>
 
           <li className='nav-item'>
             <button className='nav-button'>Postpaid</button>
             <div className='dropdown-content'>
-              <a href="#">Recharge</a>
-              <a href="#">Buy New Connection</a>
-              <a href="#">View Plan</a>
-              <a href="#">International Roaming</a>
-              <a href="#">Switch Prepaid to Postpaid</a>
+              <a href="/recharge">Recharge</a>
+              <a href="buynewconn">Buy New Connection</a>
+              <a href="/plans">View Plan</a>
+              <a href="/introam">International Roaming</a>
+              <a href="/switch">Switch Prepaid to Postpaid</a>
             </div>
           </li>
 
           <li className='nav-item'>
             <button className='nav-button'>Broadband</button>
             <div className='dropdown-content'>
-              <a href="#">Pay Bill/ Recharge</a>
-              <a href="#">Buy New Connection</a>
-              <a href="#">View Plan</a>
+              <a href="/paybill">Pay Bill/ Recharge</a>
+              <a href="/buynewconn">Buy New Connection</a>
+              <a href="/plans">View Plan</a>
             </div>
           </li>
 
           <li className='nav-item'>
             <button className='nav-button'>DTH</button>
             <div className='dropdown-content'>
-              <a href="#">Recharge</a>
-              <a href="#">Buy New DTH Connection</a>
-              <a href="#">View Plans</a>
-              <a href="#">Xstream</a>
-              <a href="#">Buy Second DTH Connection</a>
+              <a href="/recharge">Recharge</a>
+              <a href="buydth">Buy New DTH Connection</a>
+              <a href="/plans">View Plans</a>
+              <a href="/xstream">Xstream</a>
+              <a href="buyadddth">Buy Second DTH Connection</a>
             </div>
           </li>
 
           <li className='nav-item'>
             <button className='nav-button'>Bank</button>
             <div className='dropdown-content'>
-              <a href="#">View Account</a>
-              <a href="#">Get New Account</a>
-              <a href="#">Add Money</a>
-              <a href="#">Know More</a>
+              <a href="/viewaccound">View Account</a>
+              <a href="/getaccount">Get New Account</a>
+              <a href="/addmoney">Add Money</a>
+              <a href="/knowmore">Know More</a>
             </div>
           </li>
 
           <li className='nav-item'>
             <button className='nav-button'>Airtel Finance</button>
             <div className='dropdown-content'>
-              <a href="#">Credit Card</a>
-              <a href="#">Get Loans</a>
-              <a href="#">Know More</a>
+              <a href="/getcreditcard">Credit Card</a>
+              <a href="/getloans">Get Loans</a>
+              <a href="/knowmore">Know More</a>
             </div>
           </li>
 
           <li className='nav-item'>
-            <button className='nav-button'><img src="./profile.svg" width="25" height="25" alt="Profile" style={{ color: 'red' }} />Profile</button>
+             <button className='nav-button'>{/*<svg src="D:\Project\Noproject_Branch\noproject\src\Components\Assets\Nav\profile.svg" width="25" height="25" alt="" />*/}Profile</button> 
             <div className='dropdown-content'>
-              <a href="#">Login</a>
-              <a href="#">Recharge</a>
-              <a href="#">Help</a>
+              <a href="./login">Login</a>
+              <a href="/recharge">Recharge</a>
+              <a href="/help">Help</a>
             </div>
           </li>
         </ul>

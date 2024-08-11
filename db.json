@@ -39,8 +39,17 @@
       "operator": "Aircel",
       "email": "ramvishnu390@gmail.com",
       "password": "vishnu123"
+    },
+    {
+      "id": "51ea",
+      "name": "Kanish",
+      "phone": "9732173546",
+      "operator": "Airtel",
+      "email": "kanish123@gmail.com",
+      "password": "kanish123"
     }
   ],
+  
   "admins": [
     {
       "id": "1722275407319",

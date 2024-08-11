@@ -1,50 +1,62 @@
 .footer {
-  background-color: #f8f8f8;
-  padding: 20px 0;
+  background-color: white;
+  /*background-color: #1a1a1a; Dark background for contrast */
+  /*color: #f0f0f0;  Light text color for readability */
+  color: #000000; /* Light text color for readability */
+  padding: 40px 20px; /* Increased padding for a more spacious look */
   font-family: Arial, sans-serif;
+  /* border-top: 4px solid #0073e6; Top border for a sleek look */
 }
 
 .fLists {
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
+  justify-content: space-between; /* Space items evenly */
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+  max-width: 1200px; /* Restrict the width */
+  margin: 0 auto; /* Center the content */
 }
 
 .fList {
   list-style: none;
   padding: 0;
   margin: 10px;
-  width: 200px; /* Optional: Set a fixed width for consistent alignment */
+  flex: 1 1 200px; /* Flex items to adapt */
 }
 
 .fListTitle {
-  font-weight: bold; /* Remove bold styling */
-  margin-bottom: 10px;
-  color: black;
-  font-size: 16px; /* Adjust font size if needed */
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #0073e6; /* Accent color */
+  font-size: 18px;
+  border-bottom: 2px solid #0073e6; /* Underline for emphasis */
+  padding-bottom: 5px;
 }
 
 .fListItem {
-  margin: 3px 0; /* Adjust margin for smaller items */
-  font-size: 14px; /* Make the font size smaller */
+  margin: 5px 0;
+  font-size: 15px;
+  transition: color 0.3s; /* Smooth color transition on hover */
 }
 
 .fListItem a {
-  color: black;
+  /* color: #f0f0f0; */
+  color: #000000;
   text-decoration: none;
   font-weight: lighter;
+  transition: color 0.3s, padding-left 0.3s; /* Smooth transition */
 }
 
 .fListItem a:hover {
-  text-decoration: none;
-  color: #0073e6;
+  color: #0073e6; /* Accent color on hover */
+  padding-left: 5px; /* Add a slight indent on hover */
 }
 
 .fText {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px; /* Increased margin for spacing */
   font-size: 14px;
-  color: #777;
+  /* color: #bbb; Slightly lighter color for contrast */
+  color: #000000;
 }

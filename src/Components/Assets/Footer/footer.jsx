@@ -9,12 +9,12 @@ const Footer = () => {
           <li className="fListItem"><a href="#airtel-black-bill-payment">Airtel Black Bill Payment</a></li>
           <li className="fListItem"><a href="#prepaid-recharge">Prepaid Recharge</a></li>
           <li className="fListItem"><a href="#postpaid-bill-payment">Postpaid Bill Payment</a></li>
-          <li className="fListItem"><a href="#dth-recharges">DTH Recharges</a></li>
+          {/* <li className="fListItem"><a href="#dth-recharges">DTH Recharges</a></li>
           <li className="fListItem"><a href="#broadband-payment">Broadband Payment</a></li>
           <li className="fListItem"><a href="#exciting-offers">Exciting Offers</a></li>
           <li className="fListItem"><a href="#personal-loans">Personal Loans</a></li>
           <li className="fListItem"><a href="#airtel-payments-bank">Airtel Payments Bank</a></li>
-          <li className="fListItem"><a href="#airtel-thanks-app">Airtel Thanks App</a></li>
+          <li className="fListItem"><a href="#airtel-thanks-app">Airtel Thanks App</a></li> */}
           <li className="fListItem"><a href="#free-sim-delivery">Free Sim Delivery</a></li>
           <li className="fListItem"><a href="#telecom-tariff">Telecom Tariff</a></li>
           <li className="fListItem"><a href="#rights-issue">Rights Issue</a></li>
@@ -51,6 +51,12 @@ const Footer = () => {
           <li className="fListItem"><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           <li className="fListItem"><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li className="fListItem"><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        </ul>
+        <ul className="fList">
+          <li className="fListTitle">Administrators</li>
+          <li className="fListItem"><a href="./wponbnqapl,jplhwroizv95vozd" target="_blank" rel="noopener noreferrer">Admin Login</a></li>
+          <li className="fListItem"><a href="./wponbnqapl,jplhwroizv95vozdsign" target="_blank" rel="noopener noreferrer">Sign Up as Admin</a></li>
+
         </ul>
       </div>
       <div className="fText">Copyright © 2023 NoProject. All rights reserved</div>

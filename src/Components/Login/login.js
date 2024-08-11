@@ -4,21 +4,21 @@ import { validateMobileNumber, validatePassword } from './validation';
 import { loginUser } from './auth';
 import './login.css';
 
-const Login = ({ onLogin }) => { // Accept onLogin as a prop
-  const [phone, SetPhoneNumber] = useState('');
+const Login = () => {
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [PhoneError, SetPhoneError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!validateMobileNumber(phone)) {
-      SetPhoneError('Please enter a valid Phone Number');
+      setPhoneError('Please enter a valid phone number');
       return;
     } else {
-      SetPhoneError('');
+      setPhoneError('');
     }
 
     if (!validatePassword(password)) {
@@ -31,10 +31,9 @@ const Login = ({ onLogin }) => { // Accept onLogin as a prop
       if (user.length > 0) {
         setShowSuccessMessage(true);
         setTimeout(() => { setShowSuccessMessage(false); }, 3000);
-        onLogin(user); // Pass user data to onLogin
         navigate('/');
       } else {
-        alert('Invalid PhoneNumber or password');
+        alert('Invalid phone number or password');
       }
     } catch (error) {
       console.error('Error fetching user details:', error);
@@ -46,17 +45,16 @@ const Login = ({ onLogin }) => { // Accept onLogin as a prop
     <div className='login-page'>
       <div className='login-container'>
         <div className='login-form'>
-          {showSuccessMessage && (<div className='success-message'>Successfully Logged in</div>)}
+          <h1>Login</h1>
+          {showSuccessMessage && ( <div className='success-message'>Successfully Logged in</div> )}
           <form onSubmit={handleLogin}>
             <input
               type='text'
               placeholder='Phone Number'
               value={phone}
-              onChange={(e) => SetPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
-              maxLength={10}
-              pattern='\d{10}'
+              onChange={(e) => setPhone(e.target.value)}
             />
-            <div className='error-message'>{PhoneError}</div>
+            <div className='error-message'>{phoneError}</div>
             <input
               type='password'
               placeholder='Password'

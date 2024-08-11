@@ -6,7 +6,7 @@ import "./carousel.css";
 
 export default function Caro() {
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 300,
     slidesToShow: 1,

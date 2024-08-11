@@ -1,8 +1,3 @@
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 .homeTitle {
   width: 100%;
   font-size: 20px;
@@ -14,12 +9,145 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  /* margin: 0;
-  padding: 0; */
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
+/* Styling for the carousel container */
 .carousel-container {
-  margin-top: .01%;
+  margin-top: 0.01%;
   width: 100%;
-  height: 50%;
+  height: auto; /* Adjust height as needed */
+}
+
+/* Styling for the recharge part */
+.recharge-part {
+  width: 100%;
+  height: auto; /* Adjust height as needed */
+}
+
+/* Styling for the footers */
+.footers {
+  width: 100%;
+  height: auto; /* Adjust height as needed */
+}
+
+/* Carousel specific styles */
+.slick-slide img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+
+/* Responsive design for carousel elements */
+@media (min-width: 1920px) {
+  .element {
+    height: 400px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .element {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .element {
+    height: 200px;
+  }
+}
+
+/* Plan specific styles */
+.buttons-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease-out;
+}
+
+.button:hover {
+  background-color: #2e2e2f;
+  outline: rgb(66, 63, 63);
+}
+
+.input-field {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #abcbdb;
+  width: 100%;
+  max-width: 300px;
+  text-align: left;
+}
+
+/* Footer specific styles */
+.footer {
+  background-color: #f8f8f8;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.fLists {
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.fList {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+  width: 200px; /* Optional: Set a fixed width for consistent alignment */
+}
+
+.fListTitle {
+  font-weight: bold; /* Remove bold styling */
+  margin-bottom: 10px;
+  color: black;
+  font-size: 16px; /* Adjust font size if needed */
+}
+
+.fListItem {
+  margin: 3px 0; /* Adjust margin for smaller items */
+  font-size: 14px; /* Make the font size smaller */
+}
+
+.fListItem a {
+  color: black;
+  text-decoration: none;
+  font-weight: lighter;
+}
+
+.fListItem a:hover {
+  text-decoration: none;
+  color: #0073e6;
+}
+
+.fText {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
 }
