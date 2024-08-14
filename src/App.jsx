@@ -27,7 +27,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/wponbnqapl,jplhwroizv95vozd' element={<Loginadmin onLoginSuccess={handleAdminLogin} />} />
         <Route path='/wponbnqapl,jplhwroizv95vozdsign' element={<Signadmin />} />
-        <Route path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to="/admin-login" />} />
+        {/* <Route path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to="/admin-login" />} /> */}
+        <Route path="/admin" element={<AdminPage />} />
         <Route path='/portal' element={<Portal/>}/>
         {/* <Route path='/test' element={<Test/>}/> */}
       </Routes>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
 import './ad.css';
 import AddForm from './AddForm';
+import EditForm from './editform';
 
 const AdminPage = () => {
   const [users, setUsers] = useState([]);
@@ -10,12 +11,14 @@ const AdminPage = () => {
   const [loading, setLoading] = useState(true);
   const [isAddingUser, setIsAddingUser] = useState(false);
   const [isAddingAdmin, setIsAddingAdmin] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [editingItem, setEditingItem] = useState(null);
+
+  const navigate = useNavigate(); // Define navigate using useNavigate
 
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/admins');
+        const response = await axios.get('http://127.0.0.1:8000/admin/');
         console.log('Fetched admins:', response.data);
         setAdmins(response.data);
       } catch (error) {
@@ -25,7 +28,7 @@ const AdminPage = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/users');
+        const response = await axios.get('http://127.0.0.1:8000/user/');
         console.log('Fetched users:', response.data);
         setUsers(response.data);
       } catch (error) {
@@ -46,13 +49,14 @@ const AdminPage = () => {
   const handleDelete = async (id, type) => {
     if (window.confirm(`Are you sure you want to delete this ${type}?`)) {
       try {
+        await axios.delete(`http://127.0.0.1:8000/${type}/${id}/`);
+        
         if (type === 'user') {
           setUsers(users.filter(user => user.id !== id));
         } else if (type === 'admin') {
           setAdmins(admins.filter(admin => admin.id !== id));
         }
 
-        await axios.delete(`http://localhost:3001/${type}s/${id}`);
         console.log(`Deleted ${type} with id: ${id}`);
       } catch (error) {
         console.error('Error deleting data:', error);
@@ -61,45 +65,29 @@ const AdminPage = () => {
   };
 
   const handleEdit = async (item, type) => {
+    setEditingItem({ ...item, type });
+  };
+
+  const submitEdit = async (updatedItem) => {
     try {
-      let updatedItem;
+      const { type, id, ...data } = updatedItem;
+
+      const url = `http://127.0.0.1:8000/${type}/${id}/`;
+      await axios.put(url, data);
 
       if (type === 'user') {
-        updatedItem = {
-          id: item.id,
-          name: item.name,
-          phone: item.phone,
-          operator: item.operator,
-          email: item.email,
-          password: item.password
-        };
-
-        const updatedUsers = users.map(user => user.id === item.id ? updatedItem : user);
+        const updatedUsers = users.map(user => user.id === id ? updatedItem : user);
         setUsers(updatedUsers);
-
-        await axios.put(`http://localhost:3001/users/${item.id}`, updatedItem);
-
       } else if (type === 'admin') {
-        updatedItem = {
-          id: item.id,
-          admin_name: item.admin_name,
-          admin_email: item.admin_email,
-          admin_password: item.admin_password
-        };
-
-        const updatedAdmins = admins.map(admin => admin.id === item.id ? updatedItem : admin);
+        const updatedAdmins = admins.map(admin => admin.id === id ? updatedItem : admin);
         setAdmins(updatedAdmins);
-
-        await axios.put(`http://localhost:3001/admins/${item.id}`, updatedItem);
-
-      } else {
-        throw new Error(`Invalid type: ${type}`);
       }
 
-      console.log(`Edited ${type}:`, updatedItem);
+      setEditingItem(null);
+      console.log(`Updated ${type}:`, updatedItem);
 
     } catch (error) {
-      console.error('Error editing data:', error);
+      console.error('Error updating data:', error);
     }
   };
 
@@ -109,15 +97,14 @@ const AdminPage = () => {
         id: user.id,
         name: user.name,
         phone: user.phone,
-        operator: user.operator,
         email: user.email,
         password: user.password
       };
 
-      setUsers([...users, newUser]);
+      const response = await axios.post('http://127.0.0.1:8000/user/', newUser);
+      setUsers([...users, response.data]);
 
-      await axios.post('http://localhost:3001/users', newUser);
-      console.log('Added new user:', newUser);
+      console.log('Added new user:', response.data);
 
     } catch (error) {
       console.error('Error adding user:', error);
@@ -133,10 +120,10 @@ const AdminPage = () => {
         admin_password: admin.admin_password
       };
 
-      setAdmins([...admins, newAdmin]);
+      const response = await axios.post('http://127.0.0.1:8000/admin/', newAdmin);
+      setAdmins([...admins, response.data]);
 
-      await axios.post('http://localhost:3001/admins', newAdmin);
-      console.log('Added new admin:', newAdmin);
+      console.log('Added new admin:', response.data);
 
     } catch (error) {
       console.error('Error adding admin:', error);
@@ -154,21 +141,21 @@ const AdminPage = () => {
   };
 
   const handleReturnHome = () => {
-    navigate('/'); // Navigate to the home page
+    navigate('/'); // Use navigate here
   };
 
   return (
     <div className="adminPage">
       <button className="add" onClick={() => setIsAddingUser(true)}>Add User</button>
       <button className="add" onClick={() => setIsAddingAdmin(true)}>Add Admin</button>
-      <button className="return-home" onClick={handleReturnHome}>Return to Home Page</button> {/* New button */}
+      <button className="return-home" onClick={handleReturnHome}>Return to Home Page</button>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div className="tables">
           <div className="table">
             <h2>Admins</h2>
-            <table className="admintable"> {/* Add the class name to apply CSS */}
+            <table className="admintable">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -196,12 +183,11 @@ const AdminPage = () => {
           </div>
           <div className="table">
             <h2>Users</h2>
-            <table className="admintable"> {/* Add the class name to apply CSS */}
+            <table className="admintable">
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>Phone</th>
-                  <th>Operator</th>
                   <th>Email</th>
                   <th>Actions</th>
                 </tr>
@@ -212,7 +198,6 @@ const AdminPage = () => {
                     <tr key={user.id}>
                       <td>{user.name}</td>
                       <td>{user.phone}</td>
-                      <td>{user.operator}</td>
                       <td>{user.email}</td>
                       <td>
                         <button className="edit" onClick={() => handleEdit(user, 'user')}>Edit</button>
@@ -221,7 +206,7 @@ const AdminPage = () => {
                     </tr>
                   ))
                 ) : (
-                  <tr><td colSpan="5">No users available</td></tr>
+                  <tr><td colSpan="4">No users available</td></tr>
                 )}
               </tbody>
             </table>
@@ -230,6 +215,7 @@ const AdminPage = () => {
       )}
       {isAddingUser && <AddForm type="user" onAdd={(item) => { handleAdd(item, 'user'); setIsAddingUser(false); }} onClose={() => setIsAddingUser(false)} />}
       {isAddingAdmin && <AddForm type="admin" onAdd={(item) => { handleAdd(item, 'admin'); setIsAddingAdmin(false); }} onClose={() => setIsAddingAdmin(false)} />}
+      {editingItem && <EditForm item={editingItem} onSave={submitEdit} onClose={() => setEditingItem(null)} />}
     </div>
   );
 };

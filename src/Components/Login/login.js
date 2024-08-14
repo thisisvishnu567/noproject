@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { validateMobileNumber, validatePassword } from './validation';
-import { loginUser } from './auth';
+import axios from 'axios';
 import './login.css';
 
 const Login = () => {
@@ -9,66 +8,88 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [phoneError, setPhoneError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [serverError, setServerError] = useState('');
   const navigate = useNavigate();
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    const regex = /^[0-9\b]+$/;
+
+    if (value === '' || (regex.test(value) && value.length <= 10)) {
+      setPhone(value);
+    }
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!validateMobileNumber(phone)) {
-      setPhoneError('Please enter a valid phone number');
+    setPhoneError('');
+    setPasswordError('');
+    setServerError('');
+
+    if (phone.length !== 10) {
+      setPhoneError('Please enter a valid 10-digit phone number');
       return;
-    } else {
-      setPhoneError('');
     }
 
-    if (!validatePassword(password)) {
-      alert('Password must be at least 6 characters long');
+    if (password.length < 6) {
+      setPasswordError('Password must be at least 6 characters long');
       return;
     }
 
     try {
-      const user = await loginUser(phone, password);
-      if (user.length > 0) {
+      const response = await axios.post('http://127.0.0.1:8000/api/login/', {
+        phone,
+        password
+      });
+
+      if (response.data.success) {
         setShowSuccessMessage(true);
-        setTimeout(() => { setShowSuccessMessage(false); }, 3000);
-        navigate('/');
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+          navigate('/');
+        }, 3000);
       } else {
-        alert('Invalid phone number or password');
+        setPasswordError(response.data.message || 'Login failed');
       }
     } catch (error) {
-      console.error('Error fetching user details:', error);
-      alert('An error occurred while fetching user details');
+      console.error('Error logging in:', error.message);
+      setServerError('An error occurred while logging in');
     }
   };
 
   return (
-    <div className='login-page'>
-      <div className='login-container'>
-        <div className='login-form'>
+    <div className="login-page">
+      <div className="login-container">
+        <div className="login-form">
           <h1>Login</h1>
-          {showSuccessMessage && ( <div className='success-message'>Successfully Logged in</div> )}
+          {showSuccessMessage && <div className="success-message">Successfully Logged in</div>}
           <form onSubmit={handleLogin}>
+            <div className="error-message">{phoneError}</div>
             <input
-              type='text'
-              placeholder='Phone Number'
+              type="text"
+              placeholder="Phone Number"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handlePhoneChange}
+              maxLength="10"
             />
-            <div className='error-message'>{phoneError}</div>
+            <div className="error-message">{passwordError}</div>
             <input
-              type='password'
-              placeholder='Password'
+              type="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type='submit'>Login</button>
+            <button type="submit">Login</button>
           </form>
-          <div className='register-link'>
+          <div className="register-link">
             <p>
               Don't have an account?{' '}
-              <Link to='/sign'>Register here</Link>
+              <Link to="/sign">Register here</Link>
             </p>
           </div>
+          {serverError && <div className="error-message">{serverError}</div>}
         </div>
       </div>
     </div>

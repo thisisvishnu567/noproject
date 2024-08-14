@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './signUp.css';
 
-const Register = () => {
+const AdminRegister = () => {
   const [admin_name, setName] = useState('');
   const [admin_email, setEmail] = useState('');
   const [admin_password, setPassword] = useState('');
@@ -11,11 +11,12 @@ const Register = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [serverError, setServerError] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(admin_email)) {
       setEmailError('Please enter a valid email address');
@@ -38,17 +39,19 @@ const Register = () => {
       setConfirmPasswordError('');
     }
 
-    const userData = {
+    const adminData = {
       admin_name,
       admin_email,
       admin_password
     };
 
     try {
-      await axios.post('http://localhost:3001/admins', userData);
-      navigate('/admin-login');
+      const response = await axios.post(`http://127.0.0.1:8000/admin/`, adminData);
+      console.log('Admin registration successful:', response.data);
+      navigate('/wponbnqapl,jplhwroizv95vozd');
     } catch (error) {
-      console.error('Error registering Admin:', error);
+      console.error('Error registering admin:', error);
+      setServerError('An error occurred during registration. Please try again.');
     }
   };
 
@@ -57,19 +60,17 @@ const Register = () => {
       <div className='register-container'>
         <div className='register-form'>
           <form onSubmit={handleRegister}>
-
-            
             <input
               type='text'
-              placeholder='Name'
+              placeholder='Admin Name'
               value={admin_name}
               onChange={(e) => setName(e.target.value)}
             />
-            
+
             <div className='error-message'>{emailError}</div>
             <input
               type='text'
-              placeholder='Email'
+              placeholder='Admin Email'
               value={admin_email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -81,6 +82,7 @@ const Register = () => {
               value={admin_password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
             <div className='error-message'>{confirmPasswordError}</div>
             <input
               type='password'
@@ -88,18 +90,20 @@ const Register = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
+
             <button type='submit'>Register</button>
           </form>
 
           <div className='login-link'>
             <p>
-              Already An Admin? <Link to='/admin-login'>Login here</Link>
+              Already an admin? <Link to='/admin-login'>Login here</Link>
             </p>
           </div>
+          {serverError && <div className='error-message'>{serverError}</div>}
         </div>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default AdminRegister;

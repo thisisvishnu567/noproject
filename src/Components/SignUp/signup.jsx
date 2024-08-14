@@ -8,11 +8,11 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
-  const [operator, setOperator] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [serverError, setServerError] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -43,16 +43,17 @@ const Register = () => {
     const userData = {
       name,
       phone,
-      operator,
       email,
       password
     };
 
     try {
-      await axios.post('http://localhost:3001/users', userData);
+      const response = await axios.post(`http://127.0.0.1:8000/user/`, userData);
+      console.log('Registration successful:', response.data);
       navigate('/login');
     } catch (error) {
       console.error('Error registering user:', error);
+      setServerError('An error occurred during registration. Please try again.');
     }
   };
 
@@ -76,20 +77,6 @@ const Register = () => {
               maxLength={10}
             />
 
-            <select 
-              className='dropdownOP'
-              value={operator}
-              onChange={(e) => setOperator(e.target.value)}
-            >
-              <option value=''>Select Operator</option>
-              <option value='Aircel'>Aircel</option>
-              <option value='Airtel'>Airtel</option>
-              <option value='BSNL'>BSNL</option>
-              <option value='JIO'>JIO</option>
-              <option value='Tata DOCOMO'>Tata DOCOMO</option>
-              <option value='Vodafone'>Vodafone</option>
-            </select>
-            
             <div className='error-message'>{emailError}</div>
             <input
               type='text'
@@ -120,6 +107,7 @@ const Register = () => {
               Already have an account? <Link to='/login'>Login here</Link>
             </p>
           </div>
+          {serverError && <div className='error-message'>{serverError}</div>}
         </div>
       </div>
     </div>

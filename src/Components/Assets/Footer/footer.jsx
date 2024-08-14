@@ -54,7 +54,7 @@ const Footer = () => {
         </ul>
         <ul className="fList">
           <li className="fListTitle">Administrators</li>
-          <li className="fListItem"><a href="./wponbnqapl,jplhwroizv95vozd" target="_blank" rel="noopener noreferrer">Admin Login</a></li>
+          <li className="fListItem"><a href="./admin" target="_blank" rel="noopener noreferrer">Admin Login</a></li>
           <li className="fListItem"><a href="./wponbnqapl,jplhwroizv95vozdsign" target="_blank" rel="noopener noreferrer">Sign Up as Admin</a></li>
 
         </ul>

@@ -4,7 +4,6 @@ const AddForm = ({ type, onAdd, onClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [operator, setOperator] = useState('');
   const [password, setPassword] = useState('');
   const [adminName, setAdminName] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
@@ -17,7 +16,6 @@ const AddForm = ({ type, onAdd, onClose }) => {
       name,
       email,
       phone,
-      operator,
       password,
     } : {
       id: Date.now().toString(),
@@ -27,12 +25,9 @@ const AddForm = ({ type, onAdd, onClose }) => {
     };
 
     onAdd(newItem);
-    
-    // Reset fields after submission
     setName('');
     setEmail('');
     setPhone('');
-    setOperator('');
     setPassword('');
     setAdminName('');
     setAdminEmail('');
@@ -63,13 +58,6 @@ const AddForm = ({ type, onAdd, onClose }) => {
               placeholder='Phone'
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              required
-            />
-            <input
-              type='text'
-              placeholder='Operator'
-              value={operator}
-              onChange={(e) => setOperator(e.target.value)}
               required
             />
             <input
